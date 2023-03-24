@@ -1,5 +1,8 @@
 package model.users;
 
+import model.Page;
+import service.MainService;
+
 public abstract class User extends GuestUser { //ar abstract nedrikst izveidot objektus
 	//1.variables
 	private String username;
@@ -73,4 +76,26 @@ public abstract class User extends GuestUser { //ar abstract nedrikst izveidot o
 		return "RU No." + getGenerateId() 
 		+ ": " + name + " " + surname + ", " + username;
 	}
+	
+	public boolean login() {
+		for(User temp:MainService.allRegisterdUsers) {
+			if(temp.getUsername().equals(username) 
+					&& temp.getEncodedPassword().equals(encodedPassword)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void followPage(Page page) throws Exception {
+		if(page == null) {
+			throw (new Exception("Page not found"));
+		}
+		page.addFollower(this);
+	}
+	
+	//TODO unfollow page -> page.removefollower(this)
+	
+	public abstract void createPost();
+	
 }
