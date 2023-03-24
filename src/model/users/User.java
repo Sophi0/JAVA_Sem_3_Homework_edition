@@ -1,6 +1,8 @@
 package model.users;
 
 import model.Page;
+import model.Post;
+import model.PostType;
 import service.MainService;
 
 public abstract class User extends GuestUser { //ar abstract nedrikst izveidot objektus
@@ -96,6 +98,6 @@ public abstract class User extends GuestUser { //ar abstract nedrikst izveidot o
 	
 	//TODO unfollow page -> page.removefollower(this)
 	
-	public abstract void createPost();
+	public abstract void createPost(Post post, PostType type);
 	
 }
