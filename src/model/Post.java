@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Post {
 	//1.variables
@@ -24,11 +25,11 @@ public class Post {
 	
 	
 	public void setMsg(String inputMsg) {
-		if(inputMsg != null && inputMsg.matches("[A-Za-z\b@#!%^&*]{8,}$")){ 
+		if(inputMsg != null && inputMsg.length() > 3 && inputMsg.matches("[A-Za-z\b@#!%^&*]{8,}$")){ 
 			msg = inputMsg;
 		}
 		else {
-			msg = "Unknown";
+			msg = "-----";
 		} 
 	}
 	
@@ -40,24 +41,26 @@ public class Post {
 		countOfLikes = 0;
 	}
 	
+	public void increaseLikes() {
+		countOfLikes++;
+	}
 	//3.constructors
 	//no-args
 	public Post() {
-		setMsg("Unknown");
+		setMsg("Test msg");
 		setDateTime();
-		setCountOfLikes();
 	}
 	
 	//args
-	public Post(String msg, LocalDateTime date, int countOfLikes) {
+	public Post(String msg) {
 		setMsg(msg);
-		setDateTime();
-		setCountOfLikes();
 	}
 	
 	//toString
+	//23/03/2023 13:57:30 -> mana zina(3)
 	public String toString() {
-	return "" + "Message: " + msg + ", " + "date: " + dateTime + ", " + "count of likes: " + countOfLikes;
+	return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")) 
+			+ "-> " + msg + " (" + countOfLikes + ") ";
 	}
 	
 }
