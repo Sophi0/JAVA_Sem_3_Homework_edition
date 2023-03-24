@@ -98,6 +98,6 @@ public abstract class User extends GuestUser { //ar abstract nedrikst izveidot o
 	
 	//TODO unfollow page -> page.removefollower(this)
 	
-	public abstract void createPost(Post post, PostType type);
+	public abstract Post createPost(Post post, PostType type);
 	
 }
