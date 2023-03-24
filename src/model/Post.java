@@ -44,6 +44,7 @@ public class Post {
 	public void increaseLikes() {
 		countOfLikes++;
 	}
+	
 	//3.constructors
 	//no-args
 	public Post() {
@@ -56,7 +57,7 @@ public class Post {
 		setMsg(msg);
 	}
 	
-	//toString
+	//4/toString
 	//23/03/2023 13:57:30 -> mana zina(3)
 	public String toString() {
 	return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss")) 
