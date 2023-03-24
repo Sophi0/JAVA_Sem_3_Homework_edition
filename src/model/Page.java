@@ -12,6 +12,7 @@ public class Page {
 	private ArrayList<Post> postsInPage = new ArrayList<>();
 	
 	//2.get and set
+	//3.functions add and remove
 	public String getTitle() {
 		return title;
 	}
@@ -43,14 +44,48 @@ public class Page {
 	}
 	
 	public void addFollower(User follower) {
-		if(!followers.contains(follower)) {
+		if(follower != null && !followers.contains(follower)) {
 			followers.add(follower);
 		}
 	}
 	
 	public void removeFollower(User unFollower) {
-		if(followers.contains(unFollower)) {
+		if(unFollower != null && followers.contains(unFollower)) {
 			followers.remove(unFollower);
 		}
+	}
+	
+	public ArrayList<Post> getPostInPage(){
+		return postsInPage;
+	}
+	
+	public void addPostInPage(Post post) {
+		if(post != null) {
+			postsInPage.add(post);
+		}
+	}
+	
+	public void removePostFromPage(Post post) {
+		if(post != null && postsInPage.contains(post)) {
+			postsInPage.remove(post);
+		}
+	}
+	
+	//3.constructors
+	//no-args
+	public Page() {
+		setTitle("---TITLE---");
+		setDescription("---DESCRIPTION---");
+	}
+	
+	//args
+	public Page(String title, String description) {
+		setTitle(title);
+		setDescription(description);
+	}
+	
+	//4.toString
+	public String toString() {
+		return title + "( " + description + ") -->" + postsInPage + "--> " + followers.size(); 
 	}
 }
